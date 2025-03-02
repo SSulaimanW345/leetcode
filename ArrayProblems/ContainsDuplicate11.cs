@@ -23,5 +23,17 @@ namespace leetcode.ArrayProblems
             }
             return false;
         }
+
+        public static bool ContainsDuplicate11UseSlidingWindow(int[] arr, int k) 
+        {
+            HashSet<int> window = new HashSet<int>();
+            for (int i=0;i< arr.Length;i++) 
+            {
+                if (window.Contains(arr[i])) return true;
+                window.Add(arr[i]);
+                if (window.Count > k ) window.Remove(arr[i - k]);
+            }
+            return false;
+        }
     }
 }
